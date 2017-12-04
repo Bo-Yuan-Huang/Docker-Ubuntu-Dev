@@ -1,2 +1,2 @@
-# References
-Bibtex references
+# My system configuration
+Some personal preference

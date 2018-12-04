@@ -1,19 +1,26 @@
 ### Set up a new VM
-1. Create a clean docker image.
+1. Create a clean docker image
   ``` bash
   docker build -t vm/bionic:clean .
-  docker run -it --name vm-clean vm/bionic:clean 
+  docker run -it --name [container name] vm/bionic:clean 
   ```
 
-2. Install widely used packages.
+2. Install commonly used packages
   ``` bash
   source setup.sh
   ```
-
-3. Create user account
+  
+  If you want to create an image for the VM (root-only)
   ``` bash
-  adduser username 
-  adduser username sudo
+  <C-d>                                       # detach the container if not already
+  docker commit [image name] [container name] # create an image based on the current VM state
+  docker attach [container name]              # attach again for the next step
+  ```
+
+3. Create an user account
+  ``` bash
+  adduser [user name]
+  adduser [user name] sudo
   ```
  
 4. Leave the VM running in background
@@ -21,26 +28,14 @@
   <C-p> <C-q>
   ```
 
-Now you should be able to log into the vm as a user. 
-
-
-### [optional] Create an image for the vm
-To create a working image for the VM, you have to detach the container first (`<C-d>`).
-
-* Create an image for the VM as a root
+  Now you should be able to log into the vm as a user. 
   ``` bash
-  docker commit [image name] vm-clean
+  ssh [user name]@[address]                   # address can be found via ifconfig
+  unminimize                                  # [optional] restore some user-only packages
+  source /app/personalize.sh                  # [optional] configure files, e.g., gitconfig
   ```
 
-* Create an image for the VM as an user
+  * To initiate a container per the image as the user
   ``` bash
-  docker run -it --name vm-user --user [user name] vm-clean
-  <C-d>
-  docker commit [image name] vm-user
+  docker run -it -name [container name] --user [user name] [image name]
   ```
-
-* To initiate a container using the image
-  ``` bash
-  docker run -it -name [vm name] --user [user name] [image name]
-  ```
-

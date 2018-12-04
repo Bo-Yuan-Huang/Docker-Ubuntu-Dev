@@ -1,8 +1,8 @@
 ### Set up a new VM
 1. Create a clean docker image.
   ``` bash
-  Docker build -t vm/bionic:clean .
-  Docker run -it --name vm-clean vm/bionic:clean 
+  docker build -t vm/bionic:clean .
+  docker run -it --name vm-clean vm/bionic:clean 
   ```
 
 2. Install widely used packages.
@@ -29,18 +29,18 @@ To create a working image for the VM, you have to detach the container first (`<
 
 * Create an image for the VM as a root
   ``` bash
-  Docker commit [image name] vm-clean
+  docker commit [image name] vm-clean
   ```
 
 * Create an image for the VM as an user
   ``` bash
-  Docker run -it --name vm-user --user [user name] vm-clean
+  docker run -it --name vm-user --user [user name] vm-clean
   <C-d>
-  Docker commit [image name] vm-user
+  docker commit [image name] vm-user
   ```
 
 * To initiate a container using the image
   ``` bash
-  Docker run -it -name [vm name] --user [user name] [image name]
+  docker run -it -name [vm name] --user [user name] [image name]
   ```
 

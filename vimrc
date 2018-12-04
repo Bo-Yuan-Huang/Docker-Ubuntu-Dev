@@ -17,14 +17,14 @@ else
     set expandtab
 endif
 
-map <C-X> :py3f /usr/local/share/clang/clang-format.py<cr>
-imap <C-X> <c-o>:py3f /usr/local/share/clang/clang-format.py<cr>
+map <C-X> :py3f /usr/share/vim/addons/syntax/clang-format.py<cr>
+imap <C-X> <c-o>:py3f /usr/share/vim/addons/syntax/clang-format.py<cr>
 
 function FormatFile()
   let l:lines="all"
-  py3f /usr/local/share/clang/clang-format.py
+  py3f /usr/share/vim/addons/syntax/clang-format.py
 endfunction
 
-autocmd BufWritePre *.h,*.c,*.hpp,*.cc,*.cpp call FormatFile()
+autocmd BufWritePre *.h,*.hpp,*.c,*.cpp,*.cc call FormatFile()
 
 source ~/.cscope_maps.vim

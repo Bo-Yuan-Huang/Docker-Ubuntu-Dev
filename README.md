@@ -2,7 +2,7 @@
 1. Create a clean docker image
   ``` bash
   docker build -t vm/bionic:clean .
-  docker run -it --name [container name] vm/bionic:clean 
+  docker run -it --name [container] vm/bionic:clean # temporary image
   ```
 
 2. Install commonly used packages
@@ -13,9 +13,10 @@
   If you want to create an image for the VM (root-only)
   ``` bash
   <C-d>                                       # detach the container if not already
-  docker commit [container name] [image name] # create an image based on the current VM state
-  docker start [container name]               # restart the container
-  docker attach [container name]              # attach again for the next step
+  docker commit [container] [image]           # create an image based on the current VM state
+  docker rm [container]                       # clean container dependency
+  docker image rm vm/bionic:clean             # remove temporary image
+  docker run -it --name [container] [image]   # create new container using the created image
   ```
 
 3. Create an user account
@@ -39,5 +40,5 @@
 
   * To initiate a container per the image as the user
   ``` bash
-  docker run -it -name [container name] --user [user name] [image name]
+  docker run -it --name [container] --user [user name] [image]
   ```

@@ -22,6 +22,7 @@
   ``` bash
   adduser [user name]
   adduser [user name] sudo
+  service ssh start
   ```
  
 4. Leave the VM running in background

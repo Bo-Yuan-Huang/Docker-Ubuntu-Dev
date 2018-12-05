@@ -23,4 +23,4 @@ DEBIAN_FRONTEND=noninteractive apt install --yes git-all
 ## server-only
 ##
 service ssh start
-
+unminimize

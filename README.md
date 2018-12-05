@@ -7,13 +7,14 @@
 
 2. Install commonly used packages
   ``` bash
-  source setup.sh
+  source setup.sh                             # prompt for unminimize (user log-in) 
   ```
   
   If you want to create an image for the VM (root-only)
   ``` bash
   <C-d>                                       # detach the container if not already
-  docker commit [image name] [container name] # create an image based on the current VM state
+  docker commit [container name] [image name] # create an image based on the current VM state
+  docker start [container name]               # restart the container
   docker attach [container name]              # attach again for the next step
   ```
 
@@ -30,8 +31,8 @@
 
   Now you should be able to log into the vm as a user. 
   ``` bash
-  ssh [user name]@[address]                   # address can be found via ifconfig
-  unminimize                                  # [optional] restore some user-only packages
+  ssh [user name]@[host]                      # host can be found via ifconfig
+  ssh-keygen -R <host>                        # if duplicated hosts
   source /app/personalize.sh                  # [optional] configure files, e.g., gitconfig
   ```
 

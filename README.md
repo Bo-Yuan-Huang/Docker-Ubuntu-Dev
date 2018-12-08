@@ -36,6 +36,7 @@
   ssh [user name]@[host]                      # host can be found via ifconfig
   ssh-keygen -R <host>                        # if duplicated hosts
   source /app/personalize.sh                  # [optional] configure files, e.g., gitconfig
+  sudo dpkg-reconfigure tzdata                # [optional] reconfigure time zone if needed
   ```
 
   * To initiate a container per the image as the user

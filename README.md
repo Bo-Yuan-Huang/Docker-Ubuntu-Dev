@@ -41,6 +41,11 @@ source /app/personalize.sh                  # [optional] configure files, e.g., 
 sudo dpkg-reconfigure tzdata                # [optional] reconfigure time zone if needed
 ```
 
+To initiate a container with support for random address (e.g., gdb)
+``` bash
+docker run --cap-add=SYS_PTRACE --security-opt seccomp=unconfined -it [image]
+```
+
 To initiate a container per the image as the user
 ``` bash
 docker run -it --name [container] --user [user name] [image]

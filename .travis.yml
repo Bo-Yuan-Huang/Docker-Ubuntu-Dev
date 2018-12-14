@@ -1,23 +1,26 @@
 services:
   - docker
 
-before_install:
-  - docker image ls
-
-install:
-  - docker build -t local-img .
-  - docker image ls
-
 before_script:
+  - docker image ls
+  - docker ps -a
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
 
 script:
-  - docker tag local-img byhuang/ubuntu-dev:latest
-  - docker push byhuang/ubuntu-dev:latest
+  # base image
+  - cd $TRAVIS_BUILD_DIR/base
+  - docker build -t base-img .
+  - docker tag base-img byhuang/ubuntu-dev:base
+  - docker push byhuang/ubuntu-dev:base
+  # personal image
+  - cd $TRAVIS_BUILD_DIR/customize
+  - docker build -t user-img .
+  - docker tag user-img byhuang/ubuntu-dev:user
+  - docker push byhuang/ubuntu-dev:user
 
 after_success:
-  - docker pull byhuang/ubuntu:dev
   - docker image ls
+  - docker ps -a
 
 notifications:
   email: false

@@ -8,11 +8,17 @@ install:
   - docker build -t local-img .
   - docker image ls
 
-after_success:
+before_script:
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+
+script:
   - docker tag local-img byhuang/ubuntu-dev:latest
   - docker push byhuang/ubuntu-dev:latest
 
-email:
-  false
+after_success:
+  - docker pull byhuang/ubuntu:dev
+  - docker image ls
+
+notifications:
+  email: false
 

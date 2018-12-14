@@ -1,13 +1,13 @@
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/4f015e7197484cef87c6b2718440dd11)](https://app.codacy.com/app/Bo-Yuan-Huang/Docker-VM?utm_source=github.com&utm_medium=referral&utm_content=Bo-Yuan-Huang/Docker-VM&utm_campaign=Badge_Grade_Dashboard)
 
-# About
+## About
 
 This repo demonstrates the use of Docker to efficiently create, run, and deploy an Linux image for personal development. 
 The personalization can be modified accordingly based on the application and environment requirements. 
 
 ### Get the image of the customized Linux-Dev
 
-Create/build a clean docker image from ubuntu:latest with packages in ``setup.sh`` installed. 
+Create/build a clean docker image from ubuntu:bionic with packages in ``setup.sh`` installed. 
 ``` bash
 docker build -t ubuntu/dev .
 ```
@@ -19,7 +19,7 @@ docker build -t ubuntu/dev .
 docker volume build dev-volume
 ```
 
-### Initiate the container and activate the server service.
+### Initiate the container and activate the server service
 
 Run the container based on the image with the volume mounted. 
 ``` bash
@@ -66,4 +66,3 @@ To initiate a container per the image as the user
 ``` bash
 docker run -it --name [container] --user [user name] [image]
 ```
-

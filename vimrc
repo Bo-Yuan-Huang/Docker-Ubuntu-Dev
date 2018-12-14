@@ -7,9 +7,6 @@ set cindent
 syntax on
 filetype indent plugin on
 
-autocmd BufRead,BufNewFile *.c,*.h,*.cc,*.cpp,*.hpp,*.java set colorcolumn=80
-highlight ColorColumn ctermbg=gray
-
 colo desert
 
 let _curfile = expand("%:t")

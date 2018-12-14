@@ -1,8 +1,0 @@
-# This is Git's per-user configuration file.
-[user]
-# Please adapt and uncomment the following lines:
-	name = Bo-Yuan Huang
-  email = byhuang1992@gmail.com
-[push]
-	default = matching
-

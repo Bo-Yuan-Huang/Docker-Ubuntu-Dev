@@ -18,10 +18,5 @@ apt install --yes net-tools
 apt install --yes openssh-server
 apt install --yes htop
 
-DEBIAN_FRONTEND=noninteractive apt install --yes git-all
+DEBIAN_FRONTEND=noninteractive apt install --yes git
 
-##
-## server-only
-##
-service ssh start
-unminimize

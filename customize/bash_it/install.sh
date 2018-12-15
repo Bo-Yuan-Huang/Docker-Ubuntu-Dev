@@ -168,11 +168,11 @@ then
 else
   echo ""
   echo -e "\033[0;32mEnabling reasonable defaults\033[0m"
-  _enable-completion bash-it
-  _enable-completion system
-  _enable-plugin base
-  _enable-plugin alias-completion
-  _enable-alias general
+  #_enable-completion bash-it
+  #_enable-completion system
+  #_enable-plugin base
+  #_enable-plugin alias-completion
+  #_enable-alias general
 fi
 
 echo ""

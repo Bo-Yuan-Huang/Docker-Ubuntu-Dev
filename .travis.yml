@@ -12,8 +12,13 @@ script:
   - docker build -t base-img .
   - docker tag base-img byhuang/ubuntu-dev:base
   - docker push byhuang/ubuntu-dev:base
+  # unpacke image
+  - cd $TRAVIS_BUILD_DIR/full
+  - docker build -t full-img .
+  - docker tag full-img byhuang/ubuntu-dev:full
+  - docker push byhuang/ubuntu-dev:full
   # personal image
-  - cd $TRAVIS_BUILD_DIR/customize
+  - cd $TRAVIS_BUILD_DIR/user
   - docker build -t user-img .
   - docker tag user-img byhuang/ubuntu-dev:user
   - docker push byhuang/ubuntu-dev:user

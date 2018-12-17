@@ -44,6 +44,9 @@ You can enable such features by running ``unminimize`` before logging in as a us
 To leave the container running in background by pressing the hot keys
 
 ``` bash
+unminimize                                      # required user input
+adduser username                                # required user input
+adduser username sudo                           # required user input
 <C-p> <C-q>
 ```
 
@@ -59,7 +62,7 @@ source ~/.bash_it/install.sh
 ### Notes
 If you have duplicated hosts (IP being used before)
 ``` bash
-ssh-keygen -R <host>                        # if duplicated hosts
+ssh-keygen -R <host>                            # if duplicated hosts
 ```
 
 If you want to reconfigure your time zone

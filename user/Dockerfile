@@ -1,4 +1,4 @@
-FROM byhuang/ubuntu-dev:full
+FROM byhuang/ubuntu-dev:base
 
 WORKDIR /app
 

@@ -19,22 +19,6 @@ cd base
 docker build -t my-image .
 ```
 
-### Unpack the packages for remote user log-in
-
-By default, the Ubuntu Docker image does not have packages needed for user log-in. 
-You can get a pre-built image with remote accessing enabled 
-
-``` bash
-docker pull byhuang/ubuntu-dev:full
-```
-
-To create a customized image with remote access, after following the previous step, modify the **FROM** entry in ``full/Dockerfile`` to my-image.
-
-``` bash
-cd full
-docker build -t my-image-full .
-```
-
 ### Initiate a container
 
 Now you can run a container based on the newly fetched/created image.
@@ -55,7 +39,9 @@ docker run -it \                                # interactive pseudo TTY
            my-image-full                        # image
 ```
 
-After creating your own user account, you can leave the container running in background by pressing the hot keys
+By default, Ubuntu Docker image does not have packages required for user log-in installed. 
+You can enable such features by running ``unminimize`` before logging in as a user.
+To leave the container running in background by pressing the hot keys
 
 ``` bash
 <C-p> <C-q>

@@ -1,5 +1,5 @@
 #!/bin/bash
 service ssh start
-/app/unpack.exp
+unminimize
 ifconfig
 /bin/bash

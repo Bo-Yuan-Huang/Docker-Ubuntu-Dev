@@ -1,7 +1,0 @@
-#!/usr/bin/expect
-spawn unminimize
-expect "Would you like to continue? \[y/N\]"
-send -- "y\r"
-expect "Do you want to continue? \[Y/n\]"
-send -- "Y\r"
-expect eof

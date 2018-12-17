@@ -24,7 +24,7 @@ docker build -t my-image .
 Now you can run a container based on the newly fetched/created image.
 
 ``` bash
-docker run -it my-image-full
+docker run -it my-image
 ```
 
 To create a volume (shared storage) and mount to the container.
@@ -32,11 +32,11 @@ To create a volume (shared storage) and mount to the container.
 ``` bash
 docker volume build my-data
 docker run -it \                                # interactive pseudo TTY
-           -v my-data:/path/to/dir my-data \    # mount the volume (shared storage)
+           -v my-data:/path/to/dir \            # mount the volume (shared storage)
            --name cont-name \                   # specify container name
            --cap-add=SYS_PTRACE \               # enable debugger
            --security-opt seccomp=unconfined \  # enable debugger
-           my-image-full                        # image
+           my-image                             # image
 ```
 
 By default, Ubuntu Docker image does not have packages required for user log-in installed. 

@@ -54,7 +54,7 @@ adduser username sudo                           # required user input
 
 An example of automating personalization can be found in [user](user).
 It shows how to create an user account (with sudo) and set up personal preferred environment.
-To install customized bash prompt
+To install customized bash prompt based on [bash_it](https://github.com/Bash-it/bash-it).
 ``` bash
 source /app/themes/install.sh
 ```

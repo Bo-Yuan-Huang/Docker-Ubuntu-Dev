@@ -6,7 +6,7 @@ COPY . /app
 
 RUN /bin/bash -c "source setup.sh"
 
-ENTRYPOINT ["/app/start_ssh.sh"]
+ENTRYPOINT ["/app/unpack.exp", "/app/start_ssh.sh"]
 
 CMD ["/bin/bash"]
 

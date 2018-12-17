@@ -56,7 +56,7 @@ An example of automating personalization can be found in [user](user).
 It shows how to create an user account (with sudo) and set up personal preferred environment.
 To install customized bash prompt
 ``` bash
-source ~/.bash_it/install.sh
+source /app/themes/install.sh
 ```
 
 ### Notes

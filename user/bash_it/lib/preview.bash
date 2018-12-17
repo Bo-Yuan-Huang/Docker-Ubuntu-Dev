@@ -1,3 +1,4 @@
+#!/bin/bash
 if [[ $BASH_PREVIEW ]];
 then
   unset BASH_PREVIEW #Prevent infinite looping

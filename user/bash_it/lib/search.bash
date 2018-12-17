@@ -1,3 +1,4 @@
+#!/bin/bash
 #
 # Search by Konstantin Gredeskoul «github.com/kigster»
 #———————————————————————————————————————————————————————————————————————————————

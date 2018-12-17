@@ -3,67 +3,71 @@
 
 ## About
 
-This repo demonstrates the use of Docker to efficiently create, run, and deploy an Linux image for personal development. 
-The personalization can be modified accordingly based on the application and environment requirements. 
+This repo demonstrates the use of Docker to efficiently create, run, and deploy a Linux (Ubuntu Bionic) image with several basic build packages.
+It also provides scripts to build customized Docker image for personal configuration, e.g., vim, bash, git, etc. 
 
-### Get the image of the customized Linux-Dev
+### Get the Ubuntu Bionic image with development packages installed
 
-Create/build a clean docker image from ubuntu:bionic with packages in ``setup.sh`` installed. 
+A pre-built image with packages in [setup.sh](base/setup.sh) can be fetched from Docker host
+``` bash
+docker pull byhuang/ubuntu-dev:base
+```
+
+To create a customized image, modify ``base/setup.sh`` and build 
 ``` bash
 cd base
-docker build -t local-base .
+docker build -t my-image .
 ```
 
-### Create a volume (shared storage)
+### Unpack the packages for remote user log-in
 
-*Volume* can be mounted as a shared storage. It can be shared with multiple containers. 
+By default, the Ubuntu Docker image does not have packages needed for user log-in. 
+You can get a pre-built image with remote access usibility enabled 
+
 ``` bash
-docker volume build dev-volume
+docker pull byhuang/ubuntu-dev:full
 ```
 
-### Initiate the container and activate the server service
+To create a customized image with remote access, after following the previous step, modify the **FROM** entry in ``full/Dockerfile`` to my-image.
 
-Run the container based on the image with the volume mounted. 
 ``` bash
-docker run -it --name dev-cont -v dev-volume:/data local-base
+cd full
+docker build -t my-image-full .
 ```
 
-To initiate a container with support for random address (e.g., gdb)
+### Initiate a container
+
+Now you can run a container based on the newly fetched/created image.
+
 ``` bash
-docker run -it --cap-add=SYS_PTRACE --security-opt seccomp=unconfined local-base
+docker run -it my-image-full
 ```
 
-The base Ubuntu image does not contain packages required for remote log-in. 
-To enable remote access and start ssh server:
+To create a volume (shared storage) and mount to the container.
+
 ``` bash
-unminimize
-service ssh start
+docker volume build my-data
+docker run -it \                                # interactive pseudo TTY
+           -v my-data:/path/to/dir my-data \    # mount the volume (shared storage)
+           --name cont-name \                   # specify container name
+           --cap-add=SYS_PTRACE \               # enable debugger
+           --security-opt seccomp=unconfined \  # enable debugger
+           my-image-full                        # image
 ```
 
-### User specific for remote log-in
+You can leave the container running in background by pressing the hot keys
 
-Create an user account and personalize
 ``` bash
-adduser [user name]
-adduser [user name] sudo 
-```
-
-Leave the container running in backgroud
-``` bash
-ifconfig
 <C-p> <C-q>
 ```
 
-Now you should be able to log into the vm as a user. 
-``` bash
-ssh [user name]@[host]                      # host can be found via ifconfig
-```
+### Personal use example
 
-My personalization is defined in ``/customize/personalize.sh``.
+An example of automating personalization can be found in [user](user).
+It shows how to create an user account (with sudo) and set up personal preferred environment.
+To install customized bash prompt
 ``` bash
-source /app/personalize.sh                  # configure vim, tmux, cscope, git, etc.
-sudo dpkg-reconfigure tzdata                # reconfigure time zone if desired
-source ~/.bash_it/install.sh                # install bash theme (themes in ~/.bash_it)
+source ~/.bash_it/install.sh
 ```
 
 ### Notes
@@ -72,3 +76,7 @@ If you have duplicated hosts (IP being used before)
 ssh-keygen -R <host>                        # if duplicated hosts
 ```
 
+If you want to reconfigure your time zone
+``` bash
+sudo dpkg-reconfigure tzdata                # reconfigure time zone if desired
+```

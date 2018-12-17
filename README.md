@@ -8,7 +8,7 @@ It also provides scripts to build customized Docker image for personal configura
 
 ### Get the Ubuntu Bionic image with development packages installed
 
-A pre-built image with packages in [setup.sh](base/setup.sh) can be fetched from Docker host
+A pre-built image with packages in [setup.sh](base/setup.sh) is available in Docker host
 ``` bash
 docker pull byhuang/ubuntu-dev:base
 ```
@@ -22,7 +22,7 @@ docker build -t my-image .
 ### Unpack the packages for remote user log-in
 
 By default, the Ubuntu Docker image does not have packages needed for user log-in. 
-You can get a pre-built image with remote access usibility enabled 
+You can get a pre-built image with remote accessing enabled 
 
 ``` bash
 docker pull byhuang/ubuntu-dev:full
@@ -55,7 +55,7 @@ docker run -it \                                # interactive pseudo TTY
            my-image-full                        # image
 ```
 
-You can leave the container running in background by pressing the hot keys
+After creating your own user account, you can leave the container running in background by pressing the hot keys
 
 ``` bash
 <C-p> <C-q>

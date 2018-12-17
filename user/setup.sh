@@ -2,7 +2,8 @@
 ##
 ## add user
 ##
-/app/adduser_it.sh
+/app/adduser_it.exp
+adduser byhuang sudo
 
 ##
 ## personalize

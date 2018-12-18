@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 SCM_THEME_PROMPT_DIRTY=" ${red}✗"
 SCM_THEME_PROMPT_CLEAN=" ${bold_green}✓"
-SCM_THEME_PROMPT_PREFIX=" |"
+SCM_THEME_PROMPT_PREFIX=" ${green}|"
 SCM_THEME_PROMPT_SUFFIX="${green}|"
 
 GIT_THEME_PROMPT_DIRTY=" ${red}x"
@@ -13,7 +13,7 @@ RVM_THEME_PROMPT_PREFIX="|"
 RVM_THEME_PROMPT_SUFFIX="|"
 
 function prompt_command() {
-    PS1="${bold_cyan}\u ${reset_color}${white}\w${reset_color}$(scm_prompt_info)${red} → ${reset_color} ";
+    PS1="${bold_cyan}\u ${reset_color}${white}\w${reset_color}$(scm_prompt_info)${red}→${reset_color} ";
 }
 
 THEME_CLOCK_COLOR=${THEME_CLOCK_COLOR:-"$blue"}

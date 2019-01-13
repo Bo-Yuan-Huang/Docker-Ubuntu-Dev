@@ -20,7 +20,7 @@ RUN apt update && DEBIAN_FRONTEND=noninteractive apt install -y \
     wget \
     && rm -rf /var/lib/apt/lists/*
 
-WORKDIR ~
+WORKDIR /root
 
 CMD ["/bin/bash"]
 

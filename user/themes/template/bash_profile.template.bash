@@ -29,6 +29,8 @@ export SCM_CHECK=true
 
 export SCM_GIT_SHOW_MINIMAL_INFO=true
 
+alias l=ls
+
 # Set Xterm/screen/Tmux title with only a short hostname.
 # Uncomment this (or set SHORT_HOSTNAME to something else),
 # Will otherwise fall back on $HOSTNAME.

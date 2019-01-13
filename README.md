@@ -9,11 +9,13 @@ It also provides scripts to build customized Docker image for personal configura
 ### Get the Ubuntu Bionic image with development packages installed
 
 A pre-built image with packages listed in [Dockerfile](base/Dockerfile) is available in Docker host
+
 ``` bash
 docker pull byhuang/ubuntu-dev:base
 ```
 
 To create a customized image, modify ``base/Dockerfile`` and build 
+
 ``` bash
 cd base
 docker build -t my-image .
@@ -56,17 +58,24 @@ adduser username sudo                           # required user input
 An example of automating personalization can be found in [user](user).
 It shows how to create an user account (with sudo) and set up personal preferred environment.
 To install customized bash prompt based on [bash_it](https://github.com/Bash-it/bash-it).
+
 ``` bash
-source ~/.themes/install.sh
+# root
+passwd byhuang                                  # set pass word
+
+# log-in as user
+.themes/install.sh                              # initiate bash config
 ```
 
 ### Notes
 If you have duplicated hosts (IP being used before)
+
 ``` bash
 ssh-keygen -R <host>                            # if duplicated hosts
 ```
 
 If you want to reconfigure your time zone
+
 ``` bash
-sudo dpkg-reconfigure tzdata                # reconfigure time zone if desired
+sudo dpkg-reconfigure tzdata                    # reconfigure time zone if desired
 ```

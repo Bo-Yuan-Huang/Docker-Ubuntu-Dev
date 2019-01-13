@@ -6,7 +6,7 @@ RUN apt update && DEBIAN_FRONTEND=noninteractive apt install --yes \
 
 # add user
 ENV USER_NAME byhuang
-RUN groupadd -r $USER_NAME && useradd --create-home -r -g $USER_NAME $USER_NAME
+RUN groupadd -r $USER_NAME && useradd --create-home -s -r -g $USER_NAME $USER_NAME
 RUN adduser $USER_NAME sudo
 
 # personalization

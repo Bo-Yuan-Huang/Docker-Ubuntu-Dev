@@ -8,12 +8,12 @@ It also provides scripts to build customized Docker image for personal configura
 
 ### Get the Ubuntu Bionic image with development packages installed
 
-A pre-built image with packages in [setup.sh](base/setup.sh) is available in Docker host
+A pre-built image with packages listed in [Dockerfile](base/Dockerfile) is available in Docker host
 ``` bash
 docker pull byhuang/ubuntu-dev:base
 ```
 
-To create a customized image, modify ``base/setup.sh`` and build 
+To create a customized image, modify ``base/Dockerfile`` and build 
 ``` bash
 cd base
 docker build -t my-image .
@@ -36,6 +36,7 @@ docker run -it \                                # interactive pseudo TTY
            --name cont-name \                   # specify container name
            --cap-add=SYS_PTRACE \               # enable debugger
            --security-opt seccomp=unconfined \  # enable debugger
+           --privileged \                       # enable docker in docker
            my-image                             # image
 ```
 

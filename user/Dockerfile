@@ -6,8 +6,8 @@ RUN apt update && DEBIAN_FRONTEND=noninteractive apt install --yes \
 
 # add user
 ENV USER_NAME byhuang
-RUN groupadd -r $USER_NAME && useradd --create-home -r -g $USER_NAME $USER_NAME
-RUN adduser $USER_NAME sudo
+COPY adduser_it.exp .adduser_it.exp
+run ./.adduser_it.exp
 
 # personalization
 WORKDIR /home/$USER_NAME
@@ -17,6 +17,7 @@ COPY cscope_maps.vim .cscope_maps.vim
 COPY themes/ .themes/
 RUN git config --global user.name "Bo-Yuan Huang"
 RUN git config --global user.email "byhuang1992@gmail.com"
+RUN echo "alias l=ls" >> .bashrc
 
 # start
 COPY start.sh .start.sh

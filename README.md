@@ -79,3 +79,9 @@ If you want to reconfigure your time zone
 ``` bash
 sudo dpkg-reconfigure tzdata                    # reconfigure time zone if desired
 ```
+
+If you want to grant access to files in the volume
+
+``` bash
+sudo chmod -R a+rwx /path/to/files              # add all permissions to files
+```

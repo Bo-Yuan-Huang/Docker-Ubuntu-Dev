@@ -26,4 +26,7 @@ endfunction
 
 autocmd BufWritePre *.h,*.hpp,*.c,*.cpp,*.cc call FormatFile()
 
+au BufEnter,BufRead *.py setlocal tabstop=4
+au BufEnter,BufRead *.py setlocal shiftwidth=4
+
 source ~/.cscope_maps.vim

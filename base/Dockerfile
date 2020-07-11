@@ -1,4 +1,4 @@
-FROM ubuntu:bionic
+FROM ubuntu:focal
 
 # basic packages
 RUN apt update && DEBIAN_FRONTEND=noninteractive apt install -y \
